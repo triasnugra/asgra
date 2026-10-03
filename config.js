@@ -18,7 +18,7 @@ const CONFIG = {
       note: "GPT-OSS.",
       models: [{ id: "openai/gpt-oss-120b", name: "GPT-OSS 120B" },
                { id: "openai/gpt-oss-20b", name: "GPT-OSS 20B (lebih cepat)" }] },
-    free: { label: "OpenRouter Gratis", type: "openai", keyName: "openrouter",
+    free: { label: "OpenRouter", type: "openai", keyName: "openrouter",
       url: "https://openrouter.ai/api/v1", filter: ":free$|^openrouter/free$",
       note: "Batas 20 request/menit dan 50 request/hari.",
       models: [{ id: "openrouter/free", name: "Free Router (otomatis pilih model gratis)" }] },
