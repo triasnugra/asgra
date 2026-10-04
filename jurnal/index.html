@@ -60,7 +60,7 @@ async function bj(path){let err;
   try{const r=await fetch(h+'/api/v3/'+path,{signal:ac.signal});clearTimeout(to);if(!r.ok)throw new Error(r.status);hi=(hi+t)%HOSTS.length;return await r.json()}
   catch(e){clearTimeout(to);err=e}}
  throw err}
-const NOT=/^(USDC|FDUSD|TUSD|USDP|DAI|BUSD|EUR|AEUR|USD1|XUSD|PAXG|USDE|PYUSD)$/;
+const NOT=/^(USDC|FDUSD|TUSD|USDP|DAI|BUSD|EUR|AEUR|USD1|XUSD|PAXG|USDE|PYUSD|U|USDS|USDD|RLUSD|BFUSD|USDG)$/;
 // Tanggal keputusan FOMC 2026 (hari ke-2). WAJIB diverifikasi di federalreserve.gov
 const FOMC=['2026-01-28','2026-03-18','2026-04-29','2026-06-17','2026-07-29','2026-09-16','2026-10-28','2026-12-09'];
 const HOL=['12-24','12-25','12-26','12-31','01-01'];
@@ -94,9 +94,10 @@ function an(k,qv){
  if(side==-1&&tr==1&&!devDn)side=0;
  if(side==1&&tr==-1&&!devUp&&!boUp)side=0;
  const dev=side==1?devUp:devDn;
- if(side&&mid&&!dev)return{side:0,tr,pos,mid};
+ const flat=(H-L)/L<.06;
+ if(side&&mid&&!dev)side=0;if(flat)side=0;
  if(side){ if(dO==side)why.push('OBV divergence');if(dR==side)why.push('RSI divergence');if(tr==side)why.push('searah tren')}
- let r={side,tr,pos,mid,px,why,H,L};
+ let r={side,tr,pos,mid,px,why,H,L,flat};
  if(side){
   const sl=side==1?Math.min(...rec.map(q=>q.l))*.995:Math.max(...rec.map(q=>q.h))*1.005;
   const risk=Math.abs(px-sl);r.sl=sl;r.slp=risk/px*100;r.tp=px+side*2*risk;
@@ -123,7 +124,7 @@ $('#go').onclick=async()=>{
  try{
   const t=await bj('ticker/24hr');
   const top=t.filter(x=>x.symbol.endsWith('USDT')&&!NOT.test(x.symbol.slice(0,-4))).sort((a,b)=>b.quoteVolume-a.quoteVolume).slice(0,40);
-  const bk=await kl('BTCUSDT'),ba=an(bk,1e9),res=[];
+  const bk=await kl('BTCUSDT'),ba=an(bk,1e9),res=[],all=[];
   const A=[...base];
   const v=bk.slice(-22,-2).map(q=>q.v),avg=v.reduce((a,b)=>a+b,0)/v.length;
   if(bk[bk.length-2].v<.6*avg)A.push(['y','Volume BTC kemarin di bawah 60% rata-rata 20 hari.','Volume tipis']);
@@ -131,13 +132,16 @@ $('#go').onclick=async()=>{
   A.push(['g','Tren BTC (gerbang): '+(ba.tr==1?'naik':ba.tr==-1?'turun':'netral'),'']);showAl(A);
   for(let i=0;i<top.length;i+=8){
    $('#st').textContent=`Memindai ${Math.min(i+8,40)}/40…`;
-   await Promise.all(top.slice(i,i+8).map(async x=>{try{const r=an(await kl(x.symbol),+x.quoteVolume);r.s=x.symbol.slice(0,-4);if(r.side&&r.type!='ditolak'){if(r.side==1&&ba.tr==-1)r.w.push('melawan tren BTC');res.push(r)}}catch(e){}}))}
+   await Promise.all(top.slice(i,i+8).map(async x=>{try{const r=an(await kl(x.symbol),+x.quoteVolume);r.s=x.symbol.slice(0,-4);all.push(r);if(r.side&&r.type!='ditolak'){if(r.side==1&&ba.tr==-1)r.w.push('melawan tren BTC');res.push(r)}}catch(e){}}))}
   res.sort((a,b)=>b.why.length-a.why.length);
   $('#out').innerHTML=res.map(r=>`<div class="c"><div class="t"><span>${r.s}</span><span class="${r.side==1?'L':'S'}">${r.side==1?'LONG':'SHORT'} · ${r.type}</span></div>
   <div class="g2"><div><span>Harga</span>${f(r.px)}</div><div><span>SL (${r.slp.toFixed(1)}%)</span>${f(r.sl)}</div><div><span>TP 2R</span>${f(r.tp)}</div><div><span>Posisi range</span>${Math.round(r.pos*100)}%</div></div>
   <div class="m">Tren harian: ${r.tr==1?'naik':r.tr==-1?'turun':'netral'}. ${r.why.join(' · ')}</div>${r.w.length?`<div class="w">${r.w.join(' · ')}</div>`:''}
   <div class="m">Pasang limit di area retest, bukan kejar harga.</div></div>`).join('')||'<p class="m">Tidak ada setup yang lolos aturan hari ini. Diam juga posisi.</p>';
-  $('#st').textContent=`Selesai: ${res.length} setup dari 40 koin.`;
+  const st=r=>r.side?(r.type=='ditolak'?'SL lebih dari 15%, ditolak':'SETUP'):r.flat?'harga datar/stabil':r.mid?'mid-range, hindari':r.pos<.2?'dekat range low: tunggu deviasi/retest':r.pos>.8?'dekat range high: tunggu breakout-retest/deviasi':'belum ada pemicu';
+  all.sort((a,b)=>Math.min(a.pos,1-a.pos)-Math.min(b.pos,1-b.pos));
+  $('#out').innerHTML+=`<h2>Pantauan ${all.length} koin</h2><div class="sc"><table><tr><th>Koin</th><th>Tren</th><th>Range</th><th>Status</th></tr>${all.map(r=>`<tr><td>${r.s}</td><td>${['turun','netral','naik'][r.tr+1]}</td><td>${Math.round(r.pos*100)}%</td><td>${st(r)}</td></tr>`).join('')}</table></div>`;
+  $('#st').textContent=`Selesai: ${res.length} setup, ${all.length} koin dipantau.`;
  }catch(e){$('#st').textContent='Semua server Binance gagal dijangkau ('+(e&&e.name==='AbortError'?'timeout':e&&e.message)+'). Coba ganti jaringan (Wi-Fi/data seluler) atau VPN, lalu scan lagi.'}
  b.disabled=false};
 
