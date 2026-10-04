@@ -101,7 +101,7 @@ a{color:var(--turq)}
 <header class="top">
   <div class="brand">ASGRA</div>
   <div class="cmd">
-    <select id="cat" aria-label="Jenis aset">
+    <select id="cat" aria-label="Jenis aset" autocomplete="off">
       <option value="crypto">Crypto</option><option value="stock">Saham</option><option value="fx">Forex &amp; emas</option>
     </select>
     <input id="sym" list="symlist" autocomplete="off" aria-label="Simbol" placeholder="BTC, PEPE, NASDAQ:AAPL, IDX:BBCA">
@@ -192,15 +192,20 @@ function renderList() {
 }
 function resolve() {
   let raw = $("sym").value.trim().toUpperCase().replace(/\s/g, ""), cat = $("cat").value, ex = "", t = raw;
-  if (raw.includes(":")) [ex, t] = raw.split(":");
+  if (raw.includes(":")) { [ex, t] = raw.split(":") }
+  else if (/(USDT|USDC|FDUSD|BUSD)$/.test(t)) { cat = "crypto" }          // jelas pasangan crypto
+  else if (cat !== "crypto") {                                              // BBCA -> IDX:BBCA, XAUUSD -> OANDA:XAUUSD
+    const hit = [...CONFIG.stocks, ...CONFIG.forex].find(x => x.split(":")[1] === t);
+    if (hit) { [ex, t] = hit.split(":") }
+  }
   const isCrypto = ex ? CRYPTO_EX.test(ex) : cat === "crypto";
   if (isCrypto) {
     const ticker = /(USDT|USDC|FDUSD|BUSD)$/.test(t) ? t : t + "USDT";
-    return { kind: "crypto", ticker, tv: (ex || "BINANCE") + ":" + ticker, label: ticker };
+    return { kind: "crypto", cat: "crypto", ticker, tv: (ex || "BINANCE") + ":" + ticker, label: ticker };
   }
   ex = ex || (cat === "fx" ? "FX" : "NASDAQ");
   const fx = FX_EX.test(ex) && /^[A-Z]{6}$/.test(t);
-  return { kind: "td", ticker: t, ex, tv: ex + ":" + t, label: ex + ":" + t,
+  return { kind: "td", cat: fx ? "fx" : "stock", ticker: t, ex, tv: ex + ":" + t, label: ex + ":" + t,
            td: fx ? t.slice(0, 3) + "/" + t.slice(3) : t, tdEx: !fx && !/^(NASDAQ|NYSE|AMEX)$/.test(ex) ? ex : "" };
 }
 
@@ -382,7 +387,11 @@ function drawChart() {
     autosize: true, timezone: "Asia/Jakarta", allow_symbol_change: false,
     studies: ["RSI@tv-basicstudies", "MACD@tv-basicstudies"] });
 }
-function show() { if (!$("sym").value.trim()) return; drawChart(); loadMarket() }
+function show() {
+  if (!$("sym").value.trim()) return;
+  const m = resolve(); if ($("cat").value !== m.cat) { $("cat").value = m.cat; renderList() }
+  drawChart(); loadMarket();
+}
 
 /* ---------- AI ---------- */
 const SYSTEM = "Kamu analis pasar senior (crypto, saham, forex). Jawab dalam bahasa Indonesia, ringkas, berbasis data yang diberikan. " +
@@ -529,7 +538,7 @@ function renderKeys() {
 }
 function setFundTab(t) { fundTab = t; $("tSpot").className = t === "spot" ? "on" : ""; $("tDer").className = t === "der" ? "on" : ""; renderFund() }
 
-$("sym").value = CONFIG.defaultSymbol;
+$("cat").value = "crypto"; $("sym").value = CONFIG.defaultSymbol;
 renderTabs(); renderModels(); renderKeys(); renderList();
 $("cat").onchange = () => { renderList(); $("sym").value = ""; $("sym").focus() };
 $("go").onclick = show;
