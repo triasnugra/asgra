@@ -25,7 +25,7 @@ input{width:92px;background:var(--card);border:1px solid var(--line);color:var(-
 .t{display:flex;justify-content:space-between;align-items:center;font-size:16px;margin-bottom:4px}
 .bd,.ch{font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px}
 .bd.L{background:#0c2a1f;color:var(--ok)}.bd.S{background:#3b1418;color:var(--bad)}
-.ch{border:1px solid var(--line);color:var(--mut)}.ch.ok{color:var(--ok);border-color:#14532d}.ch.wait{color:var(--warn);border-color:#854d0e}
+.ch{border:1px solid var(--line);color:var(--mut)}.ch.ok{color:var(--ok);border-color:#14532d}.ch.bad{color:var(--bad);border-color:#7f1d1d}.ch.wait{color:var(--warn);border-color:#854d0e}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0;font-size:14px}.g4 span{display:block;color:var(--mut);font-size:11px}
 .m{color:var(--mut);font-size:13px}.w{color:var(--warn);font-size:13px}.sz{margin-top:6px;padding:6px 9px;background:#0a1a2b;border-radius:8px;font-size:13px}
 .sc{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}
@@ -62,16 +62,22 @@ details{background:var(--card);border:1px solid var(--line);border-radius:10px;p
 <li>V: Fibonacci 0.75 sebagai zona koreksi tren.</li>
 <li>V: OBV dan RSI divergence sebagai konfirmasi. OBV tidak andal di koin volume kecil.</li>
 <li>V: SL ketat: scalping 3–5%, swing 10–15%. SL lebih lebar ditolak. (minimum 3%, I)</li>
-<li>V: Hindari trading saat FOMC, penutupan bulanan, libur, dan Monday range.</li>
+<li>V: Hindari trading saat penutupan bulanan, libur bervolume tipis, dan saat Monday range masih terbentuk. FOMC: tweet terbarunya bilang strategi sama, abaikan noise berita, hanya trading dengan trigger.</li>
+<li>V: Monday Low/High adalah level kunci mingguan. Trigger: sweep di luar level lalu reclaim dan retest. (dari candle harian Senin, I)</li>
+<li>V: Level kunci seperti flip 82K–83K boleh dimasuki di retest langsung tanpa menunggu deviasi.</li>
 <li>V: Ambil profit bertahap. (target 2R dan tepi range, I)</li>
 <li>Belum terverifikasi: Supertrend, Volume Profile (hanya ada di tweet, tidak dijelaskan di video). Tidak dipakai.</li>
 <li>V: Three Tap/Top: range dengan 2 sentuhan, sentuhan ke-3 berupa manipulasi lalu retest. SL di wick manipulasi. (deteksi pivot, I)</li>
 <li>V: Wolf: breakout trendline yang gagal lalu harga masuk lagi. Versi bullish kebalikannya (I). Trendline dari 2 pivot terakhir, I.</li>
 <li>V: Dominasi BTC sebagai penanda musim altcoin. (kesimpulan musim altcoin dari ETH/BTC dan 30 hari performa, I)</li>
+<li>V: Double Deviation: sweep pertama lebih dalam, sweep kedua lebih dangkal, keduanya reclaim = tekanan jual melemah, lalu ekspansi. (I: dalam 10 hari terakhir)</li>
+<li>V: Retest langsung di zona kuat (2+ sentuhan, searah tren) boleh tanpa menunggu deviasi. Zona = kotak 0.6 ATR dari tepi range (I).</li>
+<li>V: Konfirmasi di timeframe rendah: retest tertahan di 4H, batal bila close 12H melewati SL. (I: kriteria persisnya)</li>
+<li>V: Setup asimetris (contoh SUI, NEAR): SL lebar dibolehkan hanya untuk spot bila target minimal 3 kali jarak SL. Tanpa leverage.</li>
 <li>Belum dikodekan: order book dan heatmap likuiditas.</li></ul></details>
 
 <script type="module">
-import {bj,kl,NOT,feat,alertList} from './core.mjs';
+import {bj,kl,NOT,feat,alertList,conf} from './core.mjs';
 const $=s=>document.querySelector(s),SD=['turun','netral','naik'];
 const f=v=>v>=100?v.toFixed(1):v>=1?v.toFixed(3):v.toPrecision(3);
 const ld=k=>{try{return localStorage.getItem(k)}catch(e){return null}},sv=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
@@ -84,20 +90,23 @@ function card(r){const cap=+$('#cap').value||0,rk=+$('#rk').value||0,rs=cap*rk/1
  return `<div class="c"><div class="t"><b>${r.s}</b><span><span class="bd ${r.side==1?'L':'S'}">${r.side==1?'LONG':'SHORT'}</span> <span class="ch ${s[1]}">${s[0]}</span></span></div>
 <div class="g4"><div><span>Entry limit</span>${f(r.entry)}</div><div><span>SL ${r.slp.toFixed(1)}%</span>${f(r.sl)}</div><div><span>TP 2R</span>${f(r.tp)}</div><div><span>Target range</span>${f(r.t2)}</div></div>
 <div class="m">Harga ${f(r.px)} · jarak ke entry ${r.dist.toFixed(1)}% · ${r.type}</div>
+<div class="m">4H/12H: ${r.cf?`<span class="ch ${r.cf[0]}">${r.cf[1]}</span>`:'memuat…'}</div>
 <div class="m">Tren W ${tw(r)} · D ${SD[r.td+1]} · ${r.why.join(' · ')}</div>${r.w.length?`<div class="w">${r.w.join(' · ')}</div>`:''}
 <div class="sz">Risiko $${rs.toFixed(0)}: qty ${q>=100?q.toFixed(0):q.toPrecision(3)} ${r.s} (≈$${nt.toFixed(0)}${lev>1.05?`, leverage ${lev.toFixed(1)}×`:''})</div><details><summary>Grafik 90 hari</summary>${chart(r)}</details></div>`}
 function render(){const L=res.filter(r=>flt=='all'||r.side==flt);
  $('#out').innerHTML=L.map(card).join('')||'<p class="m">Tidak ada setup yang lolos aturan. Diam juga posisi.</p>'}
 function gate(){const b=btc,t=b.tr;
  const bias=b.mid?'BTC di mid-range: kurangi aktivitas, tunggu tepi range.':t==1?(b.pos<.4?'Tren naik dan dekat support: cari long.':'Tren naik: utamakan long, short hanya dengan deviasi.'):t==-1?'Tren turun: utamakan short atau diam, long hanya dengan deviasi.':'Tren netral: kurangi ukuran posisi.';
- $('#gt').className='c';$('#gt').innerHTML=`<div class="g4"><div><span>Harga BTC</span>${f(b.px)}</div><div><span>Tren weekly</span>${tw(b)}</div><div><span>Tren daily</span>${SD[b.td+1]}</div><div><span>Posisi range</span>${Math.round(b.pos*100)}%</div></div><div class="m">${bias}${b.flip?' Tren weekly baru berbalik dalam 3 minggu terakhir.':''}</div><div style="margin-top:8px">${chart(b)}</div>`}
+ $('#gt').className='c';$('#gt').innerHTML=`<div class="g4"><div><span>Harga BTC</span>${f(b.px)}</div><div><span>Tren weekly</span>${tw(b)}</div><div><span>Tren daily</span>${SD[b.td+1]}</div><div><span>Posisi range</span>${Math.round(b.pos*100)}%</div></div><div class="m">${bias}${b.flip?' Tren weekly baru berbalik dalam 3 minggu terakhir.':''}</div><div class="m">Level weekly (26 minggu): support ${f(b.wlow)} · resistance ${f(b.whigh)}. Eliz: selama BTC bertahan di atas support weekly, koreksi dilihat sebagai peluang beli, dan invalidasi hanya bila breakdown ber-close di bawahnya. Fokus ke level, bukan sentimen. (Level ini hitungan otomatis, bukan garis manual Eliz.)</div><div style="margin-top:8px">${chart(b)}</div>`}
 const stt=r=>r.side?(r.type=='ditolak'?'SL lebih dari 15%, ditolak':'SETUP'):r.flat?'harga datar/stabil':r.mid?'mid-range, hindari':r.pos<.2?'dekat range low: tunggu deviasi/retest':r.pos>.8?'dekat range high: tunggu breakout-retest/deviasi':'belum ada pemicu';
 function watch(){all.sort((a,b)=>Math.min(a.pos,1-a.pos)-Math.min(b.pos,1-b.pos));
  $('#wt').innerHTML='<tr><th>Koin</th><th>Weekly</th><th>Daily</th><th>Range</th><th>Pola</th><th>Status</th></tr>'+all.map(r=>`<tr data-s="${r.s}" style="cursor:pointer"><td>${r.s}</td><td>${tw(r)}</td><td>${SD[r.td+1]}</td><td>${Math.round(r.pos*100)}%</td><td>${r.tags.join(', ')||'-'}</td><td>${stt(r)}</td></tr>`).join('')}
 function chart(r){const k=r.k,W=640,Hh=230,n=k.length,bw=W/n,P=14,L=[[r.H,'range high','#8aa0b8'],[r.L,'range low','#8aa0b8']];
+ if(r.monL)L.push([r.monL,'Monday low','#a78bfa'],[r.monH,'Monday high','#a78bfa']);
  if(r.entry)L.push([r.entry,'entry','#38bdf8'],[r.sl,'SL','#f87171'],[r.tp,'TP','#34d399']);
  const mx=Math.max(...k.map(q=>q.h),...L.map(a=>a[0])),mn=Math.min(...k.map(q=>q.l),...L.map(a=>a[0])),y=v=>(P+(mx-v)/(mx-mn)*(Hh-2*P)).toFixed(1);
  let s=`<svg viewBox="0 0 ${W} ${Hh}" width="100%" role="img" aria-label="Grafik harian ${r.s}" style="background:#0a1a2b;border-radius:8px">`;
+ for(const[z,c]of[[r.zs,'#34d399'],[r.zr,'#f87171']])if(z)s+=`<rect x="0" y="${y(z.b)}" width="${W}" height="${Math.max(2,y(z.a)-y(z.b))}" fill="${c}" opacity=".13"/>`;
  k.forEach((q,i)=>{const x=(i*bw+bw/2).toFixed(1),c=q.c>=q.o?'#34d399':'#f87171';s+=`<line x1="${x}" x2="${x}" y1="${y(q.h)}" y2="${y(q.l)}" stroke="${c}"/><rect x="${(x-bw*.35).toFixed(1)}" y="${y(Math.max(q.o,q.c))}" width="${(bw*.7).toFixed(1)}" height="${Math.max(1,Math.abs(y(q.o)-y(q.c)))}" fill="${c}"/>`});
  for(const[v,t,c]of L)s+=`<line x1="0" x2="${W}" y1="${y(v)}" y2="${y(v)}" stroke="${c}" stroke-dasharray="4 3"/><text x="4" y="${y(v)-3}" fill="${c}">${t} ${f(v)}</text>`;
  if(r.tl){const a=Math.max(r.tl.a,r.off),v=i=>r.tl.av+r.tl.sl*(i-r.tl.a);s+=`<line x1="${((a-r.off+.5)*bw).toFixed(1)}" y1="${y(v(a))}" x2="${((r.tl.e-r.off+.5)*bw).toFixed(1)}" y2="${y(v(r.tl.e))}" stroke="#fbbf24" stroke-width="2"/><text x="${W-120}" y="14" fill="#fbbf24">trendline Wolf</text>`}
@@ -119,8 +128,8 @@ async function go(){const b=$('#go');b.disabled=true;res=[];all=[];extra=[];$('#
   if(btc.mid)extra.push(['y','BTC di mid-range. Eliz memilih diam saat ragu.','Interpretasi']);showAl();
   for(let i=0;i<top.length;i+=8){$('#st').textContent=`Memindai ${Math.min(i+8,40)}/40…`;$('#pg i').style.width=(10+Math.min(i+8,40)/40*90)+'%';
    await Promise.all(top.slice(i,i+8).map(async x=>{try{const r=feat(await kl(x.symbol),+x.quoteVolume);r.s=x.symbol.slice(0,-4);all.push(r);
-    if(r.side&&r.type!='ditolak'){r.w=[];if(r.qv<2e7)r.w.push('volume tipis, OBV tidak andal');if(r.side==1&&btc.tr==-1)r.w.push('melawan tren BTC');res.push(r)}}catch(e){}}))}
-  res.sort((a,b)=>b.why.length-a.why.length||a.dist-b.dist);render();watch();try{await dom()}catch(e){}
+    if(r.side&&r.type!='ditolak'){r.w=[];if(r.qv<2e7)r.w.push('volume tipis, OBV tidak andal');if(r.type.startsWith('spot'))r.w.push('SL lebar: hanya untuk spot tanpa leverage');if(r.side==1&&btc.tr==-1)r.w.push('melawan tren BTC');res.push(r)}}catch(e){}}))}
+  res.sort((a,b)=>b.why.length-a.why.length||a.dist-b.dist);render();watch();await Promise.all(res.map(async r=>{try{r.cf=await conf(r)}catch(e){r.cf=['','tidak tersedia']}}));render();try{await dom()}catch(e){}
   $('#st').textContent=`Selesai: ${res.length} setup, ${all.length} koin dipantau.`;
  }catch(e){$('#st').textContent='Semua server Binance gagal dijangkau ('+(e&&e.name==='TimeoutError'?'timeout':e&&e.message)+'). Coba ganti jaringan atau VPN.'}
  $('#pg i').style.width='100%';b.disabled=false}
