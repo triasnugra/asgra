@@ -104,8 +104,8 @@
   "keyakinan": "",
   "alasan": "Fib 0.75 tren turun, searah tren",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-04|Aturan Eliz|TRUMP",
