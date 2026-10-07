@@ -86,8 +86,8 @@
   "keyakinan": "",
   "alasan": "deviasi atas gagal bertahan, RSI divergence",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-04|Aturan Eliz|GLMR",
