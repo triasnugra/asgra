@@ -212,8 +212,8 @@
   "keyakinan": "",
   "alasan": "Wolf bullish: breakdown trendline gagal",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-04|Aturan Eliz|FET",
