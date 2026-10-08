@@ -32,8 +32,8 @@
   "keyakinan": "",
   "alasan": "breakout ber-close, retest, searah tren",
   "alert": "penutupan weekly",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-04|Aturan Eliz|AVAX",
@@ -68,8 +68,8 @@
   "keyakinan": "",
   "alasan": "Fib 0.75 tren turun, searah tren",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-04|Aturan Eliz|WLD",
@@ -176,8 +176,8 @@
   "keyakinan": "",
   "alasan": "Wolf bullish: breakdown trendline gagal",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-04|Aturan Eliz|SAND",
@@ -230,8 +230,8 @@
   "keyakinan": "",
   "alasan": "Wolf bullish: breakdown trendline gagal",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-04|Aturan Eliz|AAVE",
