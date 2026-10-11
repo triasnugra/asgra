@@ -14,8 +14,8 @@
   "keyakinan": "",
   "alasan": "deviasi atas gagal bertahan, RSI divergence",
   "alert": "penutupan weekly",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 0.61
  },
  {
   "id": "2026-10-04|Aturan Eliz|ICP",
@@ -50,8 +50,8 @@
   "keyakinan": "",
   "alasan": "deviasi atas gagal bertahan",
   "alert": "penutupan weekly",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 0.73
  },
  {
   "id": "2026-10-04|Aturan Eliz|XRP",
