@@ -122,8 +122,8 @@
   "keyakinan": "",
   "alasan": "Wolf: breakout trendline gagal, searah tren",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-04|Aturan Eliz|ADA",
@@ -158,8 +158,8 @@
   "keyakinan": "",
   "alasan": "Fib 0.75 tren turun, searah tren",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-04|Aturan Eliz|BNB",
@@ -194,8 +194,8 @@
   "keyakinan": "",
   "alasan": "Wolf bullish: breakdown trendline gagal",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-04|Aturan Eliz|LTC",
@@ -248,8 +248,8 @@
   "keyakinan": "",
   "alasan": "Wolf bullish: breakdown trendline gagal",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 0.28
  },
  {
   "id": "2026-10-04|Aturan Eliz|BEAMX",
@@ -266,7 +266,7 @@
   "keyakinan": "",
   "alasan": "Wolf bullish: breakdown trendline gagal",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  }
 ]
