@@ -518,8 +518,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-16|Aturan Eliz|CRCLB",
@@ -878,8 +878,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, OBV divergence, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-17|Aturan Eliz|AVAX",
@@ -1220,8 +1220,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, OBV divergence, searah tren",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-18|Aturan Eliz|MUB",
