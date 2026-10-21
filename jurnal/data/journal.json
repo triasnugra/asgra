@@ -950,8 +950,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, Wolf: breakout trendline gagal, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-17|Aturan Eliz|DOT",
@@ -1544,8 +1544,8 @@
   "keyakinan": "",
   "alasan": "Wolf: breakout trendline gagal",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-20|Aturan Eliz|XRP",
@@ -1562,8 +1562,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-20|Aturan Eliz|SUI",
@@ -1670,8 +1670,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-21|Aturan Eliz|NEAR",
@@ -1958,8 +1958,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-21|Aturan Eliz|XRP",
@@ -2048,8 +2048,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-21|Aturan Eliz|INJ",
