@@ -554,8 +554,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, RSI divergence",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-16|Aturan Eliz|WAL",
@@ -1058,8 +1058,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, RSI divergence",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-17|Aturan Eliz|ARB",
