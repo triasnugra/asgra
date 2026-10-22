@@ -284,8 +284,8 @@
   "keyakinan": "",
   "alasan": "deviasi atas gagal bertahan, sweep Monday High lalu reclaim, RSI divergence, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-15|Aturan Eliz|TRX",
@@ -302,8 +302,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, Fib 0.75 tren naik, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-15|Aturan Eliz|AVAX",
@@ -320,8 +320,8 @@
   "keyakinan": "",
   "alasan": "Double Deviation: sweep ke-2 lebih dangkal, tekanan beli melemah, RSI divergence, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-15|Aturan Eliz|FIL",
@@ -338,8 +338,8 @@
   "keyakinan": "",
   "alasan": "Three Top: 2 sentuhan lalu manipulasi di atas, RSI divergence, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-15|Aturan Eliz|NEAR",
@@ -356,8 +356,8 @@
   "keyakinan": "",
   "alasan": "Three Top: 2 sentuhan lalu manipulasi di atas, RSI divergence",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-15|Aturan Eliz|WAL",
@@ -374,8 +374,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-15|Aturan Eliz|XLM",
@@ -392,8 +392,8 @@
   "keyakinan": "",
   "alasan": "Wolf: breakout trendline gagal, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-15|Aturan Eliz|BTC",
@@ -410,8 +410,8 @@
   "keyakinan": "",
   "alasan": "Double Deviation: sweep ke-2 lebih dangkal, tekanan beli melemah",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-16|Aturan Eliz|ZEC",
