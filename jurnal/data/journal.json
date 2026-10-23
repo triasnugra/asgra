@@ -1922,8 +1922,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-21|Aturan Eliz|BTC",
@@ -2066,8 +2066,8 @@
   "keyakinan": "",
   "alasan": "breakout ber-close, retest",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-21|Aturan Eliz|ZRO",
