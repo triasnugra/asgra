@@ -1166,8 +1166,8 @@
   "keyakinan": "",
   "alasan": "Double Deviation: sweep ke-2 lebih dangkal, tekanan beli melemah, sweep Monday High lalu reclaim, RSI divergence, searah tren",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-18|Aturan Eliz|ALT",
@@ -1202,8 +1202,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, Fib 0.75 tren naik, searah tren",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 0
  },
  {
   "id": "2026-10-18|Aturan Eliz|UNI",
@@ -1238,8 +1238,8 @@
   "keyakinan": "",
   "alasan": "breakdown ber-close, retest, searah tren",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": -0.04
  },
  {
   "id": "2026-10-18|Aturan Eliz|INJ",
@@ -1256,8 +1256,8 @@
   "keyakinan": "",
   "alasan": "deviasi atas gagal bertahan, RSI divergence",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 1.31
  },
  {
   "id": "2026-10-18|Aturan Eliz|BTC",
@@ -1274,8 +1274,8 @@
   "keyakinan": "",
   "alasan": "Wolf: breakout trendline gagal",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 0.69
  },
  {
   "id": "2026-10-18|Aturan Eliz|TIA",
@@ -1292,8 +1292,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 0.19
  },
  {
   "id": "2026-10-18|Aturan Eliz|AVA",
@@ -1310,8 +1310,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim",
   "alert": "Menjelang penutupan weekly (Senin 00:00 UTC).",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-20|Aturan Eliz|NEAR",
