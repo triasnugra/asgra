@@ -2138,8 +2138,8 @@
   "keyakinan": "",
   "alasan": "Double Deviation: sweep ke-2 lebih dangkal, tekanan beli melemah, RSI divergence, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|NEAR",
@@ -2174,8 +2174,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, RSI divergence, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|INJ",
@@ -2192,8 +2192,8 @@
   "keyakinan": "",
   "alasan": "deviasi atas gagal bertahan, sweep Monday High lalu reclaim, RSI divergence",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|ARB",
@@ -2210,8 +2210,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, Wolf: breakout trendline gagal, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|ETH",
@@ -2228,8 +2228,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|XAUT",
@@ -2246,8 +2246,8 @@
   "keyakinan": "",
   "alasan": "breakdown ber-close, retest, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 0.61
  },
  {
   "id": "2026-10-23|Aturan Eliz|SOL",
@@ -2264,8 +2264,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|SNDKB",
@@ -2300,8 +2300,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-23|Aturan Eliz|WLD",
@@ -2336,8 +2336,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|AAVE",
@@ -2354,8 +2354,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, Wolf: breakout trendline gagal",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|ADA",
@@ -2372,8 +2372,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|SUI",
@@ -2390,8 +2390,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|AVAX",
@@ -2408,8 +2408,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|CRCLB",
@@ -2444,8 +2444,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|MSTRB",
@@ -2462,8 +2462,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 0.1
  },
  {
   "id": "2026-10-23|Aturan Eliz|RUNE",
@@ -2480,8 +2480,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-23|Aturan Eliz|GTC",
@@ -2498,8 +2498,8 @@
   "keyakinan": "",
   "alasan": "Double Deviation: sweep ke-2 lebih dangkal, tekanan beli melemah, sweep Monday High lalu reclaim",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|HBAR",
@@ -2516,8 +2516,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|BTC",
@@ -2534,8 +2534,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|XRP",
@@ -2588,8 +2588,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "kedaluwarsa",
+  "R": 0.68
  },
  {
   "id": "2026-10-23|Aturan Eliz|TRX",
@@ -2624,8 +2624,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "tidak terisi",
+  "R": 0
  },
  {
   "id": "2026-10-23|Aturan Eliz|QNT",
@@ -2876,8 +2876,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday High lalu reclaim, searah tren",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "TP",
+  "R": 2
  },
  {
   "id": "2026-10-24|Aturan Eliz|SUI",
@@ -2930,8 +2930,8 @@
   "keyakinan": "",
   "alasan": "sweep Monday Low lalu reclaim, OBV divergence",
   "alert": "",
-  "hasil": "menunggu",
-  "R": ""
+  "hasil": "SL",
+  "R": -1
  },
  {
   "id": "2026-10-24|Aturan Eliz|MUB",
